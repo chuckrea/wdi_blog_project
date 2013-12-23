@@ -15,7 +15,7 @@
 <hr>
 <% end %>
 
-<% @posts.each do |post| %> 
+<% @posts.reverse.each do |post| %> 
 	<div class="post">
 		<h1>
 			<%= post.title %>
@@ -25,7 +25,15 @@
 		<div class= "body block_overflow">
 			<%= post.body %>
 		</div>
-		<a href="/posts/<%=post.id%>/like">LIKE</a>
+		<% if @user %>
+			<% unless @user.posts.include?(post) %>
+				<% if @user.faves.include?(post) %>
+				<a href="/posts/<%=post.id%>/unlike">UNLIKE</a>
+				<% else %>
+				<a href="/posts/<%=post.id%>/like">LIKE</a>
+				<% end %>
+			<% end %>
+		<% end %>
 		<div class="comments">
 			<% post.comments.each do |comment| %> 
 				<p><%=comment.user.username%>: <%= comment.body %></p>

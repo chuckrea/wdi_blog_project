@@ -80,7 +80,7 @@ post '/posts/:id/comments' do
 end 
 
 get '/posts/:id/like' do 
-	binding.pry
+
 	
 	user = User.find_by_username(session[:username])
 	post = Post.find(params[:id].to_i)
@@ -93,6 +93,17 @@ get '/posts/:id/like' do
 	user.faves << post
 
 	redirect '/'
+
+end
+
+get '/posts/:id/unlike' do
+
+user = User.find_by_username(session[:username])
+post = Post.find(params[:id].to_i)
+user.faves.delete(post)
+
+redirect '/'
+
 
 end
 
