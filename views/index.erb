@@ -1,14 +1,20 @@
 <% if @user %>
 	<h1>Welcome, <a href="/users/<%=@user.id%>"><%=@user.username%></a></h1>
-	<a href="/users/sign_out">sign out</a>
+	<button><a href="/users/sign_out">sign out</a></button>
 <% else %> 
-	<a href="/users/sign_up">sign up</a>
-	<a href="/users/sign_in">sign in</a>
+	<button><a href="/users/sign_up">sign up</a></button>
+	<button><a href="/users/sign_in">sign in</a></button>
 <% end %>
 
 <% if @user %>
 <form action="/posts" method="post">
 	<input type="text" name="title">
+	<select name="language">
+		<option value=nil>What Language?</option>
+		<option value=nil>Boring old English</option>
+		<option value=ruby>Ruby</option>
+		<option value=html>HTML</option>
+	</select>
 	<textarea name="body" cols="70" rows="10"></textarea>
 	<input type="submit">
 </form>

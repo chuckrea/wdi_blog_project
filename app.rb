@@ -29,12 +29,54 @@ end
 post '/posts' do
   title = params[:title]
   body = params[:body]
+  unless params[:language] == "nil"
+    language = params[:language]
+    code_body = CodeRay.scan(body, language).div(:line_numbers => :table)
+    post = Post.new(:title => title, :body => code_body)
+  else
+    post = Post.new(:title => title, :body => body)
+  end
+  
   user = User.find_by_username(session[:username])
-  post = Post.new(:title => title, :body => body)
   user.posts << post
   post.save
   redirect '/'
 end
+
+get '/posts/:id/edit' do
+
+@post = Post.find(params[:id])
+erb :edit_post
+
+end
+
+post '/posts/:id/edit' do
+  @user = User.find_by_username(session[:username])
+  post = Post.find(params[:id])
+  unless params[:language] == "nil"
+    language = params[:language]
+    code_body = CodeRay.scan(params[:body], language).div(:line_numbers => :table)
+    post.title = params[:title]
+    post.body = code_body
+  else
+    post.title = params[:title]
+    post.body = params[:body]
+  end
+
+  post.save
+
+  erb :show
+end
+
+get '/posts/:id/delete' do
+  post = Post.find(params[:id])
+  post.destroy
+
+  @user = User.find_by_username(session[:username])
+  erb :show
+
+end
+
 
 get '/users/sign_up' do 
 	erb :sign_up
@@ -66,6 +108,7 @@ end
 
 get '/users/:id' do 
 	@user = User.find(params[:id].to_i)
+
 	erb :show
 end
 

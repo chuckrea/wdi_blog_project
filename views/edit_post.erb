@@ -1,0 +1,11 @@
+<form action="/posts/<%= @post.id %>/edit" method="post">
+  <input type="text" name="title" value="<%= @post.title %>">
+  <select name="language">
+    <option value=nil>What Language?</option>
+    <option value=nil>Boring old English</option>
+    <option value=ruby>Ruby</option>
+    <option value=html>HTML</option>
+  </select>
+  <textarea name="body" cols="70" rows="10"><%= @post.body %></textarea>
+  <input type="submit">
+</form>

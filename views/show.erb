@@ -1,8 +1,30 @@
 
 <h1 class="user"><%= @user.username %></h1>
 
-<ul>
-	<% @user.faves.each do |post| %>
-		<li><%=post.title %></li>
+<h2>Your posts:</h2>
+  <% @user.posts.reverse.each do |post| %>
+    <div class="post">
+    <h2>
+      <%= post.title %>
+    </h2>
+      <p class="italics" >Created at: <%= post.created_at.asctime %></p>
+    <div class= "body">
+      <%= post.body %>
+    </div>
+    <a href="/posts/<%= post.id %>/edit">Edit Post</a>
+    <a href="/posts/<%= post.id %>/delete">Delete Post</a>
+  </div>
+  <% end %>
+
+<h2>Posts Liked by <%= @user.username %>
+  <% @user.faves.each do |post| %>
+  <div class="post">
+    <h2>
+      <%= post.title %>
+    </h2>
+      <p class="italics" >Created at: <%= post.created_at.asctime %></p>
+    <div class= "body">
+      <%= post.body %>
+    </div>
+  </div>
 	<% end %>
-</ul>

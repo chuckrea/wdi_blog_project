@@ -3,6 +3,23 @@
 	margin: 0 auto;
 }
 
+button a {
+	text-decoration: none;
+	color: black;
+}
+
+button {
+	background-color: red;
+	padding: 5px;
+	font-size: 12px;
+	font-weight: bold;
+	border-radius: 10px;
+}
+
+button:hover {
+	background-color: orange;
+}
+
 .post {
 	background-color: lightblue;
 	border: 5px solid black;
