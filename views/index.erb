@@ -1,10 +1,18 @@
 <% if @user %>
+<div class="user">
 	<h1>Welcome, <a href="/users/<%=@user.id%>"><%=@user.username%></a></h1>
 	<button><a href="/users/sign_out">sign out</a></button>
-<% else %> 
+	</div>
+<% else %>
+<div class="no_user">
+ 	<h1>Welcome to The Writer's Block</h1>
+ 	<h3>sponsored by Block Overflow</h3>
 	<button><a href="/users/sign_up">sign up</a></button>
 	<button><a href="/users/sign_in">sign in</a></button>
+</div>
 <% end %>
+
+
 
 <% if @user %>
 <form action="/posts" method="post">
@@ -15,7 +23,7 @@
 		<option value=ruby>Ruby</option>
 		<option value=html>HTML</option>
 	</select>
-	<textarea name="body" cols="70" rows="10"></textarea>
+	<textarea name="body" cols="82" rows="10"></textarea>
 	<input type="submit">
 </form>
 <hr>
@@ -49,7 +57,7 @@
 		<% if @user %>
 			<div class= "new_comment">
 				<form action="/posts/<%=post.id%>/comments" method="post">
-					<textarea name="comment_text" id="" cols="79" rows="2"></textarea>
+					<textarea name="comment_text" id="" cols="75" rows="2"></textarea>
 					<input type="submit">
 				</form>
 			</div>

@@ -1,8 +1,78 @@
+body {
+	background-image: url("http://farm3.staticflickr.com/2701/4475203104_dd1812df20.jpg");
+	background-size: 100%;
+}
+
 .container{
 	width: 600px;
 	margin: 0 auto;
 }
 
+.container img{
+
+	border-radius: 40px;
+}
+
+.user {
+	padding: 1em;
+	margin-top: -150px;
+	margin-bottom: 50px;
+	color: yellow;
+}
+
+.user a {
+	color: yellow;
+	text-decoration: none;
+}
+
+.user a:hover {
+	color: green;
+}
+
+.no_user {
+
+	padding: 1em;
+	margin-top: -175px;
+	margin-bottom: 50px;
+	color: yellow;
+	
+}
+
+.no_user h1 {
+	margin-top: 40px;
+	margin-bottom: -10px;
+	font-family: 'Press Start 2P', cursive;
+	font-size: 17px;
+}
+
+.no_user h3 {
+	color: green;
+	font-family: 'Press Start 2P', cursive;
+	font-size: 14px;
+}
+
+.no_user a {
+	color: yellow;
+}
+
+.no_user a:hover {
+	color: green;
+}
+
+.sign_in {
+	padding: 1em;
+	margin-top: -150px;
+	color: yellow;
+}
+
+.sign_in input {
+
+	padding: 5px;
+}
+
+input[type="submit"] {
+	background-color: yellow;
+}
 button a {
 	text-decoration: none;
 	color: black;
@@ -62,5 +132,10 @@ button:hover {
 .comments p:nth-child(even){
 	background-color: black;
 	color: white;
+}
+
+textarea {
+
+	resize: none;
 }
 

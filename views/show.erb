@@ -1,7 +1,9 @@
 
-<h1 class="user"><%= @user.username %></h1>
+<div class="user">
+<h1><%= @user.username %>'s Posts</h1>
+<button><a href="/">go back</a></button>
+</div>
 
-<h2>Your posts:</h2>
   <% @user.posts.reverse.each do |post| %>
     <div class="post">
     <h2>
@@ -16,7 +18,7 @@
   </div>
   <% end %>
 
-<h2>Posts Liked by <%= @user.username %></h2>
+<h2 style="color: yellow;">Posts Liked by <%= @user.username %></h2>
   <% @user.faves.each do |post| %>
   <div class="post">
     <h2>
